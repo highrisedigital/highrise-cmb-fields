@@ -7,7 +7,33 @@ Version: 1.0
 Author: Mark Wilkinson
 Author URI: https://highrise.digital
 License: GPLv2 or later
+Text Domain: highrise-cmb-fields
 */
+
+/**
+ * Copyright (c) 2016 Highrise Digitial Ltd. All rights reserved.
+ *
+ * Released under the GPL license
+ * http://www.opensource.org/licenses/gpl-license.php
+ *
+ * This is an add-on for WordPress
+ * http://wordpress.org/
+ *
+ * and the Custom Metabox Framework from Human Made (https://hmn.md)
+ * https://github.com/humanmade/Custom-Meta-Boxes
+ *
+ * **********************************************************************
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * **********************************************************************
+ */
 
 /* exist if directly accessed */
 if( ! defined( 'ABSPATH' ) ) exit;
@@ -16,7 +42,15 @@ if( ! defined( 'ABSPATH' ) ) exit;
 define( 'HDCMBF_LOCATION', dirname( __FILE__ ) );
 
 /* load required files & functions */
-require_once( dirname( __FILE__ ) . '/inc/fields.php' );
+require_once( dirname( __FILE__ ) . '/field-types/email.php' );
+require_once( dirname( __FILE__ ) . '/field-types/information.php' );
+require_once( dirname( __FILE__ ) . '/field-types/number.php' );
+require_once( dirname( __FILE__ ) . '/field-types/gallery.php' );
+require_once( dirname( __FILE__ ) . '/field-types/list-attachments.php' );
+require_once( dirname( __FILE__ ) . '/field-types/post-checkbox.php' );
+require_once( dirname( __FILE__ ) . '/field-types/post-radio.php' );
+require_once( dirname( __FILE__ ) . '/field-types/user-checkbox.php' );
+require_once( dirname( __FILE__ ) . '/field-types/user-radio.php' );
 
 /**
  * 
@@ -47,6 +81,8 @@ class Highrise_CMB_Fields {
 		$field_types[ 'list_attachments' ]	= 'List_Attachments_Field';
 		$field_types[ 'post_checkbox' ]		= 'Post_Checkbox_Field';
 		$field_types[ 'post_radio' ]		= 'Post_Radio_Field';
+		$field_types[ 'user_checkbox' ]		= 'User_Checkbox_Field';
+		$field_types[ 'user_radio' ]		= 'User_Radio_Field';
 		$field_types[ 'information' ]		= 'Information_Field';
 		$field_types[ 'number' ]			= 'Number_Field';
 		$field_types[ 'gallery' ]			= 'Gallery_Field';
