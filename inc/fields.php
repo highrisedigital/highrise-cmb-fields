@@ -123,7 +123,8 @@ class List_Attachments_Field extends CMB_Field {
 					'posts_per_page'	=> 100,
 					'no_found_rows'		=> true // we are not paginating
 				),
-				$this
+				$this,
+                $post
 			)
 		);
 		
@@ -295,6 +296,8 @@ class Post_Checkbox_Field extends CMB_Field {
 	 */
     public function html( $values ) {
 
+        global $post;
+
     	/* if the post_type is empty - use post as default */
         if( $this->args[ 'post_type' ] == '' ) {
             $post_type = 'post';
@@ -312,9 +315,12 @@ class Post_Checkbox_Field extends CMB_Field {
         			'no_found_rows'		=> true,
         			'fields'			=> 'ids'
         		),
-        		$this
+        		$this,
+                $post
         	)
         );
+
+        wp_var_dump( $post );
 
         /* get an array of the post ids */
         $theposts = $theposts->posts;
