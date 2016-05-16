@@ -32,7 +32,7 @@ class Post_Radio_Field extends Post_Checkbox_Field {
             ?>
             <li style="color: #999999">
                 <label for="<?php echo $this->name ?>-0">
-                    <input id="<?php echo $this->name ?>-0" type="radio" name="<?php echo $this->name ?>" value="0" <?php checked( true, $checked ); ?> />
+                    <input id="<?php echo $this->name ?>-0" type="radio" name="<?php echo $this->name ?>" value="" />
                     <?php _e( 'None', 'highrise-cmb-fields' ); ?>
                 </label>
             </li>
