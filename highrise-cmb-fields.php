@@ -51,6 +51,7 @@ require_once( dirname( __FILE__ ) . '/field-types/post-checkbox.php' );
 require_once( dirname( __FILE__ ) . '/field-types/post-radio.php' );
 require_once( dirname( __FILE__ ) . '/field-types/user-checkbox.php' );
 require_once( dirname( __FILE__ ) . '/field-types/user-radio.php' );
+require_once( dirname( __FILE__ ) . '/field-types/user-select.php' );
 
 /**
  * 
@@ -83,6 +84,7 @@ class Highrise_CMB_Fields {
 		$field_types[ 'post_radio' ]		= 'Post_Radio_Field';
 		$field_types[ 'user_checkbox' ]		= 'User_Checkbox_Field';
 		$field_types[ 'user_radio' ]		= 'User_Radio_Field';
+		$field_types[ 'user_select' ]		= 'User_Select_Field';
 		$field_types[ 'information' ]		= 'Information_Field';
 		$field_types[ 'number' ]			= 'Number_Field';
 		$field_types[ 'gallery' ]			= 'Gallery_Field';
