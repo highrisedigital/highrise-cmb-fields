@@ -113,20 +113,39 @@ class List_Attachments_Field extends CMB_Field {
 		global $post;
 			
 		/* get the attachment posts for this post */
-		$attachments = new WP_Query(
-			apply_filters(
-				'hdcmbf_list_attachments_query_args',
-				array(
-					'post_type'			=> 'attachment',
-					'post_parent'		=> absint( $post->ID ),
-					'post_status'		=> 'inherit',
-					'posts_per_page'	=> 100,
-					'no_found_rows'		=> true // we are not paginating
-				),
-				$this,
-                $post
-			)
+		$hdcmbf_list_attachments_query_args = array(
+            'post_type'         => 'attachment',
+            'post_parent'       => absint( $post->ID ),
+            'post_status'       => 'inherit',
+            'posts_per_page'    => 100,
+            'no_found_rows'     => true // we are not paginating
 		);
+
+        /* if we have an query args in the meta box args */
+        if( isset( $this->args[ 'query' ] ) ) {
+
+            /* loop through each query args passed in */
+            foreach( $this->args[ 'query' ] as $key => $value ) {
+
+                /* add this query arg to the array */
+                $hdcmbf_list_attachments_query_args[ $key ] = $value;
+
+            }
+
+        }
+
+        /* make the query args filterable */
+        $hdcmbf_list_attachments_query_args = apply_filters(
+            'hdcmbf_list_attachments_query_args',
+            $hdcmbf_list_attachments_query_args,
+            $this,
+            $post
+        );
+
+        /* get the attachment posts for this post */
+        $attachments = new WP_Query(
+            $hdcmbf_list_attachments_query_args
+        );
 		
 		/* check we have attachments */
 		if( $attachments->have_posts() ) {
