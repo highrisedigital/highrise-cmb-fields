@@ -47,6 +47,7 @@ class Highrise_CMB_Fields {
 		$field_types[ 'email' ]				= 'Email_Field';
 		$field_types[ 'list_attachments' ]	= 'List_Attachments_Field';
 		$field_types[ 'post_checkbox' ]		= 'Post_Checkbox_Field';
+		$field_types[ 'post_radio' ]		= 'Post_Radio_Field';
 		$field_types[ 'information' ]		= 'Information_Field';
 		$field_types[ 'number' ]			= 'Number_Field';
 		$field_types[ 'gallery' ]			= 'Gallery_Field';
