@@ -1,11 +1,13 @@
 #cmb-gallery-holder {
 	padding: 12px;
+	padding-bottom: 2px;
 	border: 1px solid #D2D2D2;
 	min-height: 152px;
 }
 .gallery-media-item {
 	float: left;
 	margin-right: 10px;
+	margin-bottom: 10px;
 	position: relative;
 	border: 1px solid #FFFFFF;
 }
@@ -29,4 +31,12 @@
 }
 .gallery-media-item img {
 	display: block;
+}
+.gallery-clearfix:before,
+.gallery-clearfix:after {
+	content: "";
+	display: table;
+}
+.gallery-clearfix:after {
+	clear: both;
 }

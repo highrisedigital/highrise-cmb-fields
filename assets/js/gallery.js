@@ -92,7 +92,7 @@ function renderMediaUploader( $, inputName ) {
 
 	}
 
-	$(document).ready(addGalleryItems);
+	$(document).ready( addGalleryItems );
 
 	var removeGalleryItems = function() {
 
@@ -109,6 +109,15 @@ function renderMediaUploader( $, inputName ) {
 
 	}
 
-	$(document).ready(removeGalleryItems);
+	$(document).ready( removeGalleryItems );
+
+	var mediaSortable = function() {
+
+		$( "#cmb-gallery-holder" ).sortable();
+    	$( "#cmb-gallery-holder" ).disableSelection();
+
+	}
+
+	$(document).ready( mediaSortable );
 
 }) ( jQuery );

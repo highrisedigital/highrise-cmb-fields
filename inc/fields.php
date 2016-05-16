@@ -410,7 +410,7 @@ class Gallery_Field extends CMB_Field {
 
             <button class="button button-primary add-cmb-gallery add_media" type="button" id="add-cmb-gallery-button" data-name="<?php echo esc_attr( $this->name ); ?>" style="margin-bottom: 10px;">Add Images</button>
 
-            <div class="cmb-gallery" id="cmb-gallery-holder">
+            <div class="cmb-gallery gallery-clearfix" id="cmb-gallery-holder">
 
                 <?php
 
@@ -475,7 +475,7 @@ class Gallery_Field extends CMB_Field {
 
         wp_enqueue_media();
 
-        wp_enqueue_script( 'hdcmbf_gallery_js', plugins_url( '/assets/js/gallery.js', dirname( __FILE__ ) ), 'jquery' );
+        wp_enqueue_script( 'hdcmbf_gallery_js', plugins_url( '/assets/js/gallery.js', dirname( __FILE__ ) ), array( 'jquery', 'jquery-ui-sortable' ) );
 
     }
 
