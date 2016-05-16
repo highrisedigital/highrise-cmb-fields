@@ -320,8 +320,6 @@ class Post_Checkbox_Field extends CMB_Field {
         	)
         );
 
-        wp_var_dump( $post );
-
         /* get an array of the post ids */
         $theposts = $theposts->posts;
         
