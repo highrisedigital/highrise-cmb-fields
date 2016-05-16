@@ -43,7 +43,6 @@ class Highrise_CMB_Fields {
 	public function add_field_types( $field_types ) {
 
 		/* add our new field types to the field types array */
-		$field_types[ 'taxonomy_checkbox' ]	= 'Taxonomy_Checkbox_Field';
 		$field_types[ 'email' ]				= 'Email_Field';
 		$field_types[ 'list_attachments' ]	= 'List_Attachments_Field';
 		$field_types[ 'post_checkbox' ]		= 'Post_Checkbox_Field';

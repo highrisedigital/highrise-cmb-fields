@@ -178,108 +178,6 @@ class List_Attachments_Field extends CMB_Field {
 }
 
 /**
- * Taxonomy_Checkbox_Field
- *
- * provides a checkbox field that can be used to show the terms in a taxonomy
- * it allows for multiple terms to be selected and saved with the same meta key
- * the display is very much like the taxonomy meta box output
- */
-class Taxonomy_Checkbox_Field extends CMB_Field {
-
-	/**
-	 * html
-	 *
-	 * this provides the html output for the form input for this field type
-	 * it gets the taxonomy terms for the taxonomy declared looping through each term
-	 * and show the input checkbox for each.
-	 * checkboxes are marked as checked if the term value is in the values array
-	 * 
-	 * @param  array $values 	the current saved values for the all the taxonomy terms
-	 */
-    public function html( $values ) {
-
-        /* if the taxonomy is empty - use post category as default */
-        if( $this->args[ 'taxonomy' ] == '' ) {
-            $taxonomy = 'category';
-        } else {
-            $taxonomy = $this->args[ 'taxonomy' ];
-        }
-
-        /* get the terms of this taxonomy */
-        $tax_terms = get_terms(
-            $taxonomy,
-            array(
-                'hide_empty'    => false
-            )
-        );
-
-        /* check we have some terms */
-        if( $tax_terms != false && ! is_wp_error( $tax_terms ) ) {
-
-            /* loop through each term */
-            foreach( $tax_terms as $tax_term ) {
-
-                /* is this terms id in the values array */
-                if( in_array( $tax_term->term_id, $values ) ) {
-                    $checked = true;
-                } else {
-                    $checked = false;
-                }
-
-                ?>
-                <li>
-                    <label for="<?php echo esc_attr( $taxonomy ); ?>-<?php echo esc_attr( $tax_term->term_id ); ?>">
-                        <input id="<?php echo esc_attr( $taxonomy ); ?>-<?php echo esc_attr( $tax_term->term_id ); ?>" type="checkbox" name="<?php echo $this->name ?>" value="<?php echo absint( $tax_term->term_id ); ?>" <?php checked( true, $checked ); ?> />
-                        <?php echo esc_html( $tax_term->name ); ?>
-                    </label>
-                </li>
-                <?php
-
-            }
-
-        } else {
-
-        	?>
-        	<p class="message"><?php _e( 'No taxonomy terms to show.', 'highrise-cmb-fields' ); ?></p>
-        	<?php
-
-        }
-
-    }
-
-    /**
-     * display
-     * controls how the field is displayed inside the metabox
-     * this function calls the html function to output each fields input html
-     */
-    public function display() {
-        
-        // If there are no values and it's not repeateble, we want to do one with empty string
-        if ( ! $this->get_values() && ! $this->args['repeatable'] )
-            $values = array( '' );
-        else
-            $values = $this->get_values();
-
-        /* fire out the title and description of the field */
-        $this->title();
-        $this->description();
-
-        /* output the display of this field type */
-        ?>
-        <div class="field-item" data-class="<?php echo esc_attr( get_class( $this ) ); ?>" style="position: relative; <?php echo esc_attr( $this->args['style'] ); ?>">
-
-            <ul>
-                <?php $this->html( $values ); ?>
-            </ul>
-
-        </div>
-        <?php
-
-    }
-
-}
-
-/**
  * 
  */
 class Post_Checkbox_Field extends CMB_Field {
@@ -298,26 +196,37 @@ class Post_Checkbox_Field extends CMB_Field {
 
         global $post;
 
-    	/* if the post_type is empty - use post as default */
-        if( $this->args[ 'post_type' ] == '' ) {
-            $post_type = 'post';
-        } else {
-            $post_type = $this->args[ 'post_type' ];
+        /* build the query args */
+        $post_checkbox_query_args = array(
+            'posts_per_page'    => 500,
+            'no_found_rows'     => true,
+            'fields'            => 'ids'
+        );
+
+        /* if we have an query args in the meta box args */
+        if( isset( $this->args[ 'query' ] ) ) {
+
+            /* loop through each query args passed in */
+            foreach( $this->args[ 'query' ] as $key => $value ) {
+
+                /* add this query arg to the array */
+                $post_checkbox_query_args[ $key ] = $value;
+
+            }
+
         }
+
+        /* make the query args filterable */
+        $post_checkbox_query_args = apply_filters(
+            'hdcmbf_post_checkbox_query_args',
+            $post_checkbox_query_args,
+            $this,
+            $post
+        );
 
         /* query all the posts from this post type */
         $theposts = new WP_Query(
-        	apply_filters(
-        		'hdcmbf_post_checkbox_query_args',
-        		array(
-        			'post_type'			=> $post_type,
-        			'posts_per_page'	=> 500,
-        			'no_found_rows'		=> true,
-        			'fields'			=> 'ids'
-        		),
-        		$this,
-                $post
-        	)
+        	$post_checkbox_query_args
         );
 
         /* get an array of the post ids */
@@ -409,25 +318,39 @@ class Post_Radio_Field extends CMB_Field {
      */
     public function html( $values ) {
 
-        /* if the post_type is empty - use post as default */
-        if( $this->args[ 'post_type' ] == '' ) {
-            $post_type = 'post';
-        } else {
-            $post_type = $this->args[ 'post_type' ];
+        global $post;
+
+        /* build the query args */
+        $post_radio_query_args = array(
+            'posts_per_page'    => 500,
+            'no_found_rows'     => true,
+            'fields'            => 'ids'
+        );
+
+        /* if we have an query args in the meta box args */
+        if( isset( $this->args[ 'query' ] ) ) {
+
+            /* loop through each query args passed in */
+            foreach( $this->args[ 'query' ] as $key => $value ) {
+
+                /* add this query arg to the array */
+                $post_radio_query_args[ $key ] = $value;
+
+            }
+
         }
+
+        /* make the query args filterable */
+        $post_radio_query_args = apply_filters(
+            'hdcmbf_post_radio_query_args',
+            $post_radio_query_args,
+            $this,
+            $post
+        );
 
         /* query all the posts from this post type */
         $theposts = new WP_Query(
-            apply_filters(
-                'hdcmbf_post_checkbox_query_args',
-                array(
-                    'post_type'         => $post_type,
-                    'posts_per_page'    => 500,
-                    'no_found_rows'     => true,
-                    'fields'            => 'ids'
-                ),
-                $this
-            )
+            $post_radio_query_args
         );
 
         /* get an array of the post ids */
