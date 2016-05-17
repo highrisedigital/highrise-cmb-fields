@@ -11,4 +11,4 @@ This is an add-on plugin for the CMB framework plugin from Human Made which allo
 
 ## How do I add the new fields?
 
-The new field types are used in exactly the same way as the existing field types with Custom Meta Boxes. The only different is passing a different `type` parameter through to the filter. Below are examples of each field types use. See the Wiki for examples of how to use the different field types provided with this plugin.
+The new field types are used in exactly the same way as the existing field types with Custom Meta Boxes. The only different is passing a different `type` parameter through to the filter. See the Wiki for examples of how to use the different field types provided with this plugin.
