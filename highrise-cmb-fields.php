@@ -76,6 +76,8 @@ class Highrise_CMB_Fields {
 	 * Set up translation for the plugin itself.
 	 */
 	public function init() {
+		$locale = apply_filters( 'plugin_locale', get_locale(), 'say_what' );
+		load_textdomain( 'highrise-cmb-fields', WP_LANG_DIR.'/highrise-cmb-fields/highrise-cmb-fields-' . $locale . '.mo' );
 		load_plugin_textdomain( 'highrise-cmb-fields', false, plugin_basename( dirname( __FILE__ ) ) . '/languages/' );
 	}
 

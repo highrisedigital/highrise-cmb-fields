@@ -1,0 +1,48 @@
+# Copyright (C) 2016 Highrise CMB Fields
+# This file is distributed under the same license as the Highrise CMB Fields package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Highrise CMB Fields 1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/highrise-cmb-"
+"fields\n"
+"POT-Creation-Date: 2016-05-17 13:24:30+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: field-types/list-attachments.php:87
+msgid "No attachments found."
+msgstr ""
+
+#: field-types/post-checkbox.php:139
+msgid "None found."
+msgstr ""
+
+#: field-types/post-radio.php:36 field-types/user-radio.php:39
+msgid "None"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Highrise CMB Fields"
+msgstr ""
+
+#. #-#-#-#-#  highrise-cmb-fields.pot (Highrise CMB Fields 1.0)  #-#-#-#-#
+#. Plugin URI of the plugin/theme
+#. #-#-#-#-#  highrise-cmb-fields.pot (Highrise CMB Fields 1.0)  #-#-#-#-#
+#. Author URI of the plugin/theme
+msgid "https://highrise.digital"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Provides an additonal suite of field types for the <a href=\"https://github."
+"com/humanmade/Custom-Meta-Boxes\">Custom Meta Box Framework plugin by Human "
+"Made</a>."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Highrise Digital Ltd"
+msgstr ""
