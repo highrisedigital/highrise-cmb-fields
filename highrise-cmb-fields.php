@@ -2,9 +2,9 @@
 /*
 Plugin Name: Highrise CMB Fields
 Plugin URI: https://highrise.digital
-Description: Provides an additonal suite of field types for the Custom Meta Box Framework plugin by Human Made.
+Description: Provides an additonal suite of field types for the <a href="https://github.com/humanmade/Custom-Meta-Boxes">Custom Meta Box Framework plugin by Human Made</a>.
 Version: 1.0
-Author: Mark Wilkinson
+Author: Highrise Digital Ltd
 Author URI: https://highrise.digital
 License: GPLv2 or later
 Text Domain: highrise-cmb-fields
@@ -66,6 +66,17 @@ class Highrise_CMB_Fields {
 		/* add our new field types to cmb */
 		add_filter( 'cmb_field_types', array( $this, 'add_field_types' ) );
 
+		/* run the init function on the init hook - text domain stuff */
+		add_action( 'plugins_loaded', array( $this, 'init' ) );
+
+	}
+
+	/**
+	 * Fires on init().
+	 * Set up translation for the plugin itself.
+	 */
+	public function init() {
+		load_plugin_textdomain( 'highrise-cmb-fields', false, plugin_basename( dirname( __FILE__ ) ) . '/languages/' );
 	}
 
 	/**
