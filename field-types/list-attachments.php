@@ -84,7 +84,7 @@ class List_Attachments_Field extends CMB_Field {
 		} else {
 
 			?>
-			<p><?php _e( 'This post has no attachments.', 'highrise-cmb-fields' ); ?></p>
+			<p><?php _e( 'No attachments found.', 'highrise-cmb-fields' ); ?></p>
 			<?php
 
 		} // end if have attachments
