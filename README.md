@@ -1,5 +1,7 @@
 # Highrise CMB Fields
 
+**This plugin is still in the development stage yet and needs extensive testing to find bugs.**
+
 This is an add-on plugin for the CMB framework plugin from Human Made which allows you to utilise a number of different field types including:
 
 * Gallery
