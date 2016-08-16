@@ -19,6 +19,15 @@ class Gallery_Field extends CMB_Field {
         ?>
         <div class="field-item" data-class="<?php echo esc_attr( get_class( $this ) ); ?>" style="position: relative; <?php echo esc_attr( $this->args['style'] ); ?>">
 
+            <?php
+
+                /**
+                 * @hook - hd_gallery_before_field_item
+                 */
+                do_action( 'hd_gallery_before_field_item', $this );
+
+            ?>
+
             <button class="button button-primary add-cmb-gallery add_media" type="button" id="add-cmb-gallery-button" data-name="<?php echo esc_attr( $this->name ); ?>" style="margin-bottom: 10px;">Add Images</button>
 
             <div class="cmb-gallery gallery-clearfix" id="cmb-gallery-holder">
@@ -35,6 +44,15 @@ class Gallery_Field extends CMB_Field {
                 ?>
 
             </div>
+
+            <?php
+
+                /**
+                 * @hook - hd_gallery_after_field_item
+                 */
+                do_action( 'hd_gallery_after_field_item', $this );
+
+            ?>
 
         </div>
         <?php
